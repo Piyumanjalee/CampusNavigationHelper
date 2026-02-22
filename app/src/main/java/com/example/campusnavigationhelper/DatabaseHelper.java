@@ -1,33 +1,19 @@
-package com.example.campusnavigationhelper;
+package com.example.campusexample;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    // Database විස්තර
-    private static final String DATABASE_NAME = "CampusNav.db";
+    private static final String DATABASE_NAME = "CampusDB";
     private static final int DATABASE_VERSION = 1;
 
-    // 1. User Table එකේ විස්තර
-    public static final String TABLE_USERS = "users";
-    public static final String COL_USER_ID = "id";
-    public static final String COL_USER_NAME = "username";
-    public static final String COL_USER_EMAIL = "email";
-    public static final String COL_USER_PASSWORD = "password";
-
-    // 2. Locations Table එකේ විස්තර
-    public static final String TABLE_LOCATIONS = "locations";
-    public static final String COL_LOC_ID = "loc_id";
-    public static final String COL_LOC_NAME = "name";
-    public static final String COL_LOC_DESCRIPTION = "description";
-
-    // 3. Favorites Table එකේ විස්තර (Foreign Keys සහිතව) [cite: 132]
-    public static final String TABLE_FAVORITES = "favorites";
-    public static final String COL_FAV_ID = "fav_id";
-    public static final String COL_FAV_USER_ID = "user_id";
-    public static final String COL_FAV_LOC_ID = "loc_id";
+    private static final String TABLE_USERS = "users";
+    private static final String COL_ID = "id";
+    private static final String COL_EMAIL = "email";
+    private static final String COL_PASSWORD = "password";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -35,33 +21,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Users table එක සෑදීම
-        db.execSQL("CREATE TABLE " + TABLE_USERS + " (" +
-                COL_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_USER_NAME + " TEXT, " +
-                COL_USER_EMAIL + " TEXT, " +
-                COL_USER_PASSWORD + " TEXT)");
-
-        // Locations table එක සෑදීම
-        db.execSQL("CREATE TABLE " + TABLE_LOCATIONS + " (" +
-                COL_LOC_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_LOC_NAME + " TEXT, " +
-                COL_LOC_DESCRIPTION + " TEXT)");
-
-        // Favorites table එක සෑදීම (පරිශීලකයාට අදාළ දත්ත පමණක් පෙන්වීමට filtering සදහා) [cite: 132, 134]
-        db.execSQL("CREATE TABLE " + TABLE_FAVORITES + " (" +
-                COL_FAV_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_FAV_USER_ID + " INTEGER, " +
-                COL_FAV_LOC_ID + " INTEGER, " +
-                "FOREIGN KEY(" + COL_FAV_USER_ID + ") REFERENCES " + TABLE_USERS + "(" + COL_USER_ID + "), " +
-                "FOREIGN KEY(" + COL_FAV_LOC_ID + ") REFERENCES " + TABLE_LOCATIONS + "(" + COL_LOC_ID + "))");
+        String CREATE_USERS_TABLE = "CREATE TABLE " + TABLE_USERS + "("
+                + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COL_EMAIL + " TEXT,"
+                + COL_PASSWORD + " TEXT" + ")";
+        db.execSQL(CREATE_USERS_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOCATIONS);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVORITES);
         onCreate(db);
+    }
+
+    public boolean addUser(String email, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_EMAIL, email);
+        values.put(COL_PASSWORD, password);
+
+        long result = db.insert(TABLE_USERS, null, values);
+        return result != -1;
+    }
+    // Method to check if user exists in the database for login
+    public boolean checkUser(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // SQL Query to search for the specific email and password
+        String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+        String[] selectionArgs = {email, password};
+
+        android.database.Cursor cursor = db.rawQuery(query, selectionArgs);
+
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
     }
 }
