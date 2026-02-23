@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnMap = findViewById(R.id.btnMap);
         btnLogout = findViewById(R.id.btnLogout);
 
-        // Set click listener for Campus Map
+
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
