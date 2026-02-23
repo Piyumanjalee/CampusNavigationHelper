@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Declare required buttons only
+
     Button btnMap, btnLogout;
 
     @Override
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize buttons
+
         btnMap = findViewById(R.id.btnMap);
         btnLogout = findViewById(R.id.btnLogout);
 
