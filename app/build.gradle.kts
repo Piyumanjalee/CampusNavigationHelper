@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.campusnavigationhelper"
+    namespace = "com.example.campusexample"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.campusnavigationhelper"
+        applicationId = "com.example.campusexample"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

@@ -4,42 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="#F5F5F5">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Registration"
-        android:textSize="24sp"
+        android:text="Campus Dashboard"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:layout_marginBottom="30dp"/>
-
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username"
-        android:inputType="text"/>
-
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"/>
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"/>
+        android:textColor="#333"
+        android:layout_marginBottom="40dp"/>
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnMap"
         android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Campus Map"
+        android:textSize="18sp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_marginTop="20dp"/>
+        android:text="LOGOUT"
+        android:backgroundTint="#FF5252"
+        android:textColor="#FFF"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"/>
 
 </LinearLayout>
