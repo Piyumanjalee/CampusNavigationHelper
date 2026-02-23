@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Return to Login Screen
+
                 Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
