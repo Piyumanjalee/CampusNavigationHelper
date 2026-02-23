@@ -1,4 +1,31 @@
-package com.example.campusnavigationhelper;
+package com.example.campusexample;
 
-public class CampusInfoActivity {
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+
+public class CampusInfoActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+        setContentView(R.layout.activity_campus_info);
+
+
+        };
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        // Handle the back button click to return to the previous activity
+        onBackPressed();
+        return true;
+    }
 }
