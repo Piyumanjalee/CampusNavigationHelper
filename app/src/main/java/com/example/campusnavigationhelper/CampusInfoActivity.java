@@ -19,6 +19,18 @@ public class CampusInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_campus_info);
 
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Campus Locations");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        Spinner spinnerFrom = findViewById(R.id.spinnerFrom);
+        Spinner spinnerTo = findViewById(R.id.spinnerTo);
+        Button btnNavigate = findViewById(R.id.btnNavigate);
+        TextView txtRoute = findViewById(R.id.txtRoute);
+
+
+
         };
     }
 
