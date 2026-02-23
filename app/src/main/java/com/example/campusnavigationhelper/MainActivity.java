@@ -1,61 +1,46 @@
-package com.example.campusnavigationhelper;
+package com.example.campusexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etUsername, etEmail, etPassword;
-    Button btnRegister;
-    DatabaseHelper dbHelper;
+    // Declare required buttons only
+    Button btnMap, btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etUsername = findViewById(R.id.etUsername);
-        etEmail = findViewById(R.id.etEmail);
-        etPassword = findViewById(R.id.etPassword);
-        btnRegister = findViewById(R.id.btnRegister);
-        dbHelper = new DatabaseHelper(this);
+        // Initialize buttons
+        btnMap = findViewById(R.id.btnMap);
+        btnLogout = findViewById(R.id.btnLogout);
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        // Set click listener for Campus Map
+        btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = etUsername.getText().toString();
-                String email = etEmail.getText().toString();
-                String pass = etPassword.getText().toString();
-
-                if(name.isEmpty() || email.isEmpty() || pass.isEmpty()){
-                    Toast.makeText(MainActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                } else {
-                    saveUser(name, email, pass);
-                }
+                // Navigate to CampusInfoActivity
+                Intent intent = new Intent(MainActivity.this, com.example.campusexample.CampusInfoActivity.class);
+                startActivity(intent);
             }
         });
-    }
 
-    private void saveUser(String name, String email, String pass) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.COL_USER_NAME, name);
-        values.put(DatabaseHelper.COL_USER_EMAIL, email);
-
-        // සරල Encryption එකක් ලෙස පාස්වර්ඩ් එක hash කිරීම මෙහිදී කළ යුතුයි
-        values.put(DatabaseHelper.COL_USER_PASSWORD, String.valueOf(pass.hashCode()));
-
-        long id = db.insert(DatabaseHelper.TABLE_USERS, null, values);
-        if (id != -1) {
-            Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Registration Failed!", Toast.LENGTH_SHORT).show();
-        }
+        // Set click listener for Logout
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Return to Login Screen
+                Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish(); // Close dashboard to prevent going back
+            }
+        });
     }
 }
