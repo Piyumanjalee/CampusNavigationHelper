@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Campus Navigation Info"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Navigation Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp"
+            android:padding="16dp"
+            android:background="@android:drawable/dialog_holo_light_frame">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Get Directions"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From:" />
+            <Spinner
+                android:id="@+id/spinnerFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To:" />
+            <Spinner
+                android:id="@+id/spinnerTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+
+            <ImageView
+                android:id="@+id/imgBlueprint"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sample_blueprint"
+                android:layout_marginBottom="16dp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/txtRoute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:visibility="gone"
+                android:background="#E8F0FE"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/btnNavigate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Navigate"
+                android:backgroundTint="#1A73E8"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:padding="12dp"
+            android:background="@android:drawable/dialog_holo_light_frame">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. Main Library"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1A73E8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: Next to the Faculty of Science.\nOperating Hours: 8:00 AM - 7:00 PM."
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:padding="12dp"
+            android:background="@android:drawable/dialog_holo_light_frame">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2. IT Faculty Building"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1A73E8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: Behind the main auditorium. Follow the second left path from the gate."
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:padding="12dp"
+            android:background="@android:drawable/dialog_holo_light_frame">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3. Student Canteen"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1A73E8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: Near the playground. Open for Breakfast and Lunch."
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:background="@android:drawable/dialog_holo_light_frame">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Faculty of Applied Sciences"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1A73E8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: Near the Main Entrance, Mihintale.\nDepartments: Biological &amp; Physical Sciences."
+                android:textSize="14sp"
+                android:textColor="#666666"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
+            android:background="@android:drawable/dialog_holo_light_frame">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Main Library"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#1A73E8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: Centrally located near Humanities Faculty.\nOpen: Weekdays 8 AM - 6 PM."
+                android:textSize="14sp"
+                android:textColor="#666666"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
