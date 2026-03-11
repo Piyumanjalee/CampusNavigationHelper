@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusExample">
         <activity
-            android:name=".activity_notes"
+            android:name=".NotesActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
