@@ -18,14 +18,16 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/login_illustration" /> <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Campus Navigation"
-    android:textSize="26sp"
-    android:textStyle="bold"
-    android:textColor="#FFFFFF"
-    android:layout_marginBottom="30dp" />
+        android:src="@drawable/login_illustration" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Campus Navigation"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,13 +73,27 @@
                 android:textColor="#FFFFFF" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="8dp"
+            android:text="Forgot Password?"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:text="LOG IN"
         android:textSize="18sp"
         android:textStyle="bold"
