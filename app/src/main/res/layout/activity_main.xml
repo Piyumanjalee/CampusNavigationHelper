@@ -49,11 +49,11 @@
             app:elevation="4dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFavorites"
+            android:id="@+id/btnNotes"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginTop="20dp"
-            android:text="MY FAVORITES"
+            android:text="MY NOTES"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
