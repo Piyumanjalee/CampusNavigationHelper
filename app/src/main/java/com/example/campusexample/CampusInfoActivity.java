@@ -1,7 +1,9 @@
 package com.example.campusexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -28,11 +30,13 @@ public class CampusInfoActivity extends AppCompatActivity {
         Spinner spinnerFrom = findViewById(R.id.spinnerFrom);
         Spinner spinnerTo = findViewById(R.id.spinnerTo);
         Button btnNavigate = findViewById(R.id.btnNavigate);
+        Button btnViewFloorPlan = findViewById(R.id.btnViewFloorPlan);
         TextView txtRoute = findViewById(R.id.txtRoute);
 
         // Populate Spinners with Campus Locations
         String[] locations = {
                 "Main Library",
+                "Main Building",
                 "IT Faculty Building",
                 "Student Canteen",
                 "Faculty of Applied Sciences"
@@ -40,6 +44,33 @@ public class CampusInfoActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, locations);
         spinnerFrom.setAdapter(adapter);
         spinnerTo.setAdapter(adapter);
+
+        // Listener to show/hide "View Floor Plan" button
+        spinnerTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String toLocation = locations[position];
+                if (toLocation.equals("Main Library") || toLocation.equals("IT Faculty Building") || 
+                    toLocation.equals("Faculty of Applied Sciences") || toLocation.equals("Main Building")) {
+                    btnViewFloorPlan.setVisibility(View.VISIBLE);
+                } else {
+                    btnViewFloorPlan.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                btnViewFloorPlan.setVisibility(View.GONE);
+            }
+        });
+
+        // Handle View Floor Plan Click
+        btnViewFloorPlan.setOnClickListener(v -> {
+             String toLocation = spinnerTo.getSelectedItem().toString();
+             Intent intent = new Intent(CampusInfoActivity.this, IndoorMapActivity.class);
+             intent.putExtra("LOCATION_NAME", toLocation);
+             startActivity(intent);
+        });
 
         // Handle Navigate Button Click
         btnNavigate.setOnClickListener(v -> {
