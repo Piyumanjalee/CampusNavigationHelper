@@ -1,62 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#A17BE6"> <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="32dp"
-    android:gravity="center"
-    android:background="#FFFFFF">
+    android:padding="24dp"
+    android:gravity="center_horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/ivLoginIllustration"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/login_illustration" /> <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Campus Navigation"
+    android:textSize="26sp"
+    android:textStyle="bold"
+    android:textColor="#FFFFFF"
+    android:layout_marginBottom="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Campus Navigation"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="#333333"
-        android:layout_marginBottom="40dp"/>
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/etLoginEmail"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Email Address"
-        android:inputType="textEmailAddress"
-        android:background="@android:drawable/editbox_background"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"
-        android:textColor="#000000"
-        android:textColorHint="#808080"/>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email Address"
+            android:textColorHint="#FFFFFF"
+            app:boxStrokeColor="#FFFFFF"
+            app:hintTextColor="#FFFFFF"
+            app:boxStrokeWidth="2dp">
 
-    <EditText
-        android:id="@+id/etLoginPassword"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:background="@android:drawable/editbox_background"
-        android:padding="12dp"
-        android:layout_marginBottom="32dp"
-        android:textColor="#000000"
-        android:textColorHint="#808080"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoginEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Password"
+            android:textColorHint="#FFFFFF"
+            app:boxStrokeColor="#FFFFFF"
+            app:hintTextColor="#FFFFFF"
+            app:boxStrokeWidth="2dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#FFFFFF">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoginPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="#FFFFFF" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="LOGIN"
+        android:layout_height="60dp"
+        android:layout_marginTop="35dp"
+        android:text="LOG IN"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:textColor="#A17BE6"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="30dp"
+        app:elevation="4dp" />
 
     <TextView
         android:id="@+id/tvRegisterLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Don't have an account? Register Here"
-        android:textColor="#0000EE"
-        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:padding="8dp"/>
+        android:padding="10dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true" />
 
 </LinearLayout>
+</ScrollView>
