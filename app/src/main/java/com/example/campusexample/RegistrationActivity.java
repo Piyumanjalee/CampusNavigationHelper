@@ -1,4 +1,4 @@
-package com.example.campusexample; // Correct package based on your folder
+package com.example.campusexample; // Consistent with your folder structure
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,13 +18,12 @@ import java.util.regex.Pattern;
 public class RegistrationActivity extends AppCompatActivity {
 
     // 1. Declare UI variables and DatabaseHelper
-    EditText etRegName, etRegEmail, etRegPassword, etRegConfirmPassword;
+    EditText etRegName, etRegEmail, etRegPassword, etRegConfirmPassword, etRegDOB; // Added etRegDOB
     Button btnRegister;
     TextView tvLoginLink;
     DatabaseHelper dbHelper;
 
     // 2. Regex Pattern for a Strong Password
-    // Requirements: Minimum 8 characters, at least 1 uppercase, 1 lowercase, 1 number, and 1 special character.
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         // at least 1 digit
@@ -48,6 +47,7 @@ public class RegistrationActivity extends AppCompatActivity {
         etRegEmail = findViewById(R.id.etRegEmail);
         etRegPassword = findViewById(R.id.etRegPassword);
         etRegConfirmPassword = findViewById(R.id.etRegConfirmPassword);
+        etRegDOB = findViewById(R.id.etRegDOB); // Initialize DOB field
         btnRegister = findViewById(R.id.btnRegister);
         tvLoginLink = findViewById(R.id.tvLoginLink);
 
@@ -59,11 +59,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 String email = etRegEmail.getText().toString().trim();
                 String password = etRegPassword.getText().toString().trim();
                 String confirmPassword = etRegConfirmPassword.getText().toString().trim();
+                String dob = etRegDOB.getText().toString().trim(); // Capture DOB
 
-                // Validation Step 1: Check if any field is empty
-                if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                // Validation Step 1: Check if any field is empty (Including DOB)
+                if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || dob.isEmpty()) {
                     Toast.makeText(RegistrationActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                    return; // Stop execution if validation fails
+                    return;
                 }
 
                 // Validation Step 2: Validate Email format
@@ -87,7 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Validation Step 5: Hash the password (SHA-256) before saving to database
+                // Validation Step 5: Hash the password (SHA-256)
                 String hashedPassword = hashPassword(password);
 
                 if (hashedPassword == null) {
@@ -95,22 +96,20 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Final Step: Insert data into SQLite Database
-                boolean isInserted = dbHelper.addUser(name, email, hashedPassword);
+                // Final Step: Insert data into Database (Passing 4 parameters now)
+                boolean isInserted = dbHelper.addUser(name, email, hashedPassword, dob);
 
                 if (isInserted) {
                     Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-                    // Redirect to Login Page
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    finish(); // Close registration activity
+                    finish();
                 } else {
                     Toast.makeText(RegistrationActivity.this, "Registration Failed! Email might already exist.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        // Click Listener for navigating to Login Page
         tvLoginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,7 +120,7 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    // Utility Method to Hash the Password using SHA-256 Algorithm
+    // Utility Method for SHA-256 Hashing
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
