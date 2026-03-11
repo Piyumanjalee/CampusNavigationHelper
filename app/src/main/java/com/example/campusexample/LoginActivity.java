@@ -1,4 +1,4 @@
-package com.example.campusexample; // Correct package based on your folder
+package com.example.campusexample; // Consistent with your folder structure
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import java.security.NoSuchAlgorithmException;
 public class LoginActivity extends AppCompatActivity {
 
     // 1. Declare UI variables and DatabaseHelper
-    TextView tvRegisterLink;
+    TextView tvRegisterLink, tvForgotPassword; // Added tvForgotPassword
     EditText etLoginEmail, etLoginPassword;
     Button btnLogin;
     DatabaseHelper dbHelper;
@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // 2. Initialize UI elements from layout
         tvRegisterLink = findViewById(R.id.tvRegisterLink);
+        tvForgotPassword = findViewById(R.id.tvForgotPassword); // Initialize new link
         etLoginEmail = findViewById(R.id.etLoginEmail);
         etLoginPassword = findViewById(R.id.etLoginPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -64,14 +65,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // Click Listener for navigating to Registration Page
+        // 4. Click Listener for Forgot Password link
+        tvForgotPassword.setOnClickListener(v -> {
+            // Navigate to ForgotPasswordActivity
+            Intent intent = new Intent(this, ForgotPasswordActivity.class);
+            startActivity(intent);
+        });
+
+        // 5. Click Listener for navigating to Registration Page
         tvRegisterLink.setOnClickListener(v -> {
             startActivity(new Intent(this, RegistrationActivity.class));
-            // finish() is not called here so user can press back button to return to login
         });
     }
 
-    // Utility Method to Hash the Password using SHA-256 Algorithm (Must be identical to Registration)
+    // Utility Method to Hash the Password using SHA-256 (Must match Registration logic)
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
