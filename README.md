@@ -88,7 +88,7 @@ git clone https://github.com/Piyumanjalee/campus-navigation-helper.git
 | ------------ | --------------------- | -------- |
 | ICT/2022/123 | S.H.M.P.K. Senadheera | 5725     |
 | ICT/2022/122 | A.W.I Ahmed           | 5724     |
-| ICT/2022/121 | Zulfa                 | 572      |
+| ICT/2022/121 | R.M.F. Zulfa          | 5723     |
 
 ---
 
