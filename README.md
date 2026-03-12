@@ -29,3 +29,7 @@ An Android application designed to help university students navigate the campus 
 - Android SDK (Level 30+)
 - JDK 11 or higher
 
+Student ID,Name,Index No / Other
+ICT/2022/123,SHMPK Senadheera,5725
+ICT/2022/122,AWI AHMED,5724
+ICT/2022/121,ZULFA,572
