@@ -20,7 +20,7 @@ public class CampusInfoActivity extends AppCompatActivity {
         // Connect the Java class with the corresponding XML layout file
         setContentView(R.layout.activity_campus_info);
 
-        // If you want to change the title of the Action Bar for this screen
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Campus Locations");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Enable back button

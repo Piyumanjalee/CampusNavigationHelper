@@ -1,4 +1,4 @@
-package com.example.campusexample; // Consistent with your folder structure
+package com.example.campusexample;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import java.security.NoSuchAlgorithmException;
 public class LoginActivity extends AppCompatActivity {
 
     // 1. Declare UI variables and DatabaseHelper
-    TextView tvRegisterLink, tvForgotPassword; // Added tvForgotPassword
+    TextView tvRegisterLink, tvForgotPassword;
     EditText etLoginEmail, etLoginPassword;
     Button btnLogin;
     DatabaseHelper dbHelper;
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Utility Method to Hash the Password using SHA-256 (Must match Registration logic)
+
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");

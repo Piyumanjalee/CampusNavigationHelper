@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // --- USER METHODS ---
+
 
     public boolean addUser(String name, String email, String password, String dob) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -98,9 +98,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return exists;
     }
 
-    // --- NOTE METHODS ---
 
-    // NEW: Method to add a note to the database
+
+
     public boolean addNote(String title, String content) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

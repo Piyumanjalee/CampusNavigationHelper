@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // 4. Set click listener for My Notes (Navigation to NotesActivity)
+        // 4. Set click listener for My Notes
         btnNotes.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, NotesActivity.class);
             startActivity(intent);

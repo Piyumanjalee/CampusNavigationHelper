@@ -19,7 +19,7 @@ public class NotesActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
 
-        // UI elements සම්බන්ධ කිරීම
+
         etNoteTitle = findViewById(R.id.etNoteTitle);
         etNoteContent = findViewById(R.id.etNoteContent);
         btnSaveNote = findViewById(R.id.btnSaveNote);
@@ -31,12 +31,12 @@ public class NotesActivity extends AppCompatActivity {
             if (title.isEmpty() || content.isEmpty()) {
                 Toast.makeText(this, "Please write something before saving!", Toast.LENGTH_SHORT).show();
             } else {
-                // Database එකට සේව් කිරීම
+
                 boolean isSaved = dbHelper.addNote(title, content);
 
                 if (isSaved) {
                     Toast.makeText(this, "Note saved successfully!", Toast.LENGTH_SHORT).show();
-                    finish(); // සේව් වුණාට පස්සේ Dashboard එකට ආපහු යනවා
+                    finish();
                 } else {
                     Toast.makeText(this, "Failed to save note", Toast.LENGTH_SHORT).show();
                 }

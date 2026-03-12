@@ -15,7 +15,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     Button btnResetPassword;
     DatabaseHelper dbHelper;
 
-    // 1. Strong Password Regex Pattern (Same as Registration for consistency)
+    // 1. Strong Password Regex Pattern
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
                     "(?=.*[0-9])" +         // at least 1 digit

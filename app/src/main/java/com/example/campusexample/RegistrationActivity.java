@@ -61,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String confirmPassword = etRegConfirmPassword.getText().toString().trim();
                 String dob = etRegDOB.getText().toString().trim(); // Capture DOB
 
-                // Validation Step 1: Check if any field is empty (Including DOB)
+                // Validation Step 1: Check if any field is empty
                 if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || dob.isEmpty()) {
                     Toast.makeText(RegistrationActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
                     return;
@@ -88,7 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Validation Step 5: Hash the password (SHA-256)
+                // Validation Step 5: Hash the password
                 String hashedPassword = hashPassword(password);
 
                 if (hashedPassword == null) {
@@ -120,7 +120,7 @@ public class RegistrationActivity extends AppCompatActivity {
         });
     }
 
-    // Utility Method for SHA-256 Hashing
+
     private String hashPassword(String password) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
