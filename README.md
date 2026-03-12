@@ -1,27 +1,103 @@
-# Campus Navigation Helper
 
-## Project Overview
-**Campus Navigation Helper** is an Android application designed to assist university students, staff, and visitors in easily navigating the campus premises. The app provides a comprehensive directory of important locations, interactive mapping, and a personalized experience for users to save their favorite spots.
 
-## Key Features
-* **User Authentication:** Secure Registration and Login system using local SQLite database.
-* **Session Management:** Keeps users logged in using `SharedPreferences` until they choose to log out.
-* **Location Directory:** A clean, scrollable list (using `RecyclerView`) of key campus locations (e.g., Library, IT Faculty, Canteens).
-* **Favorite Locations:** Logged-in users can bookmark specific locations to their personalized 'Favorites' list.
-* **Interactive Map Integration:** View campus locations on a real-world map (Powered by Google Maps API).
+---
 
-##  Technologies & Tools Used
-* **Platform:** Android
-* **Programming Language:** Java
-* **UI/UX:** XML (LinearLayout, ConstraintLayout, RecyclerView, CardView)
-* **Local Database:** SQLite (Relational DB for Users, Locations, and Favorites)
-* **Session Tracking:** SharedPreferences
-* **APIs:** Google Maps SDK for Android
-* **IDE:** Android Studio
+# Campus Navigation Helper 🏛️📍
 
-##  How to Run the Project (Installation)
-1. Clone the repository to your local machine:
-   ```bash
-   git clone [https://github.com/your-username/CampusNavigationHelper.git](https://github.com/your-username/CampusNavigationHelper.git)
+An Android application designed to help university students easily navigate the campus while also providing a personal space to manage academic and daily notes.
 
-.
+This application is developed for students of **Rajarata University of Sri Lanka** to quickly access campus locations and organize important information in one place.
+
+---
+
+## 🌟 Features
+
+### Interactive Dashboard
+
+A simple and modern dashboard that allows users to quickly access the main features of the application.
+
+### Campus Information & Maps
+
+Students can view campus maps to identify buildings and important locations within the university.
+
+### My Notes (Personal Organizer)
+
+**Add Notes**
+
+* Users can create notes with a **title** and **description**.
+* Useful for reminders, assignments, or personal tasks.
+
+**View Saved Notes**
+
+* Notes are displayed in a **RecyclerView list**.
+* The latest note appears first for easy access.
+
+**Local Data Storage**
+
+* Notes are saved using **SQLite database**.
+* All notes are stored locally on the device and can be accessed **offline**.
+
+### User Authentication
+
+The app provides **Login and Registration screens** so users can securely access their personal space.
+
+---
+
+## 🛠️ Technology Stack
+
+| Technology               | Description                          |
+| ------------------------ | ------------------------------------ |
+| **Programming Language** | Java                                 |
+| **UI Design**            | XML using Material Design Components |
+| **Database**             | SQLite (Local Storage)               |
+| **Architecture**         | Activity-based architecture          |
+| **UI Components**        | RecyclerView with Adapter Pattern    |
+| **Development Tools**    | Android Studio, Git, GitHub          |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Before running this project, make sure the following tools are installed:
+
+* **Android Studio (Ladybug version or newer)**
+* **Android SDK Level 30 or higher**
+* **JDK 11 or higher**
+
+### Installation Steps
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/Piyumanjalee/campus-navigation-helper.git
+```
+
+2. Open the project using **Android Studio**
+
+3. Allow Gradle to download required dependencies
+
+4. Run the application on an **Android Emulator** or **Physical Device**
+
+---
+
+## 🎓 Student Details
+
+| Student ID   | Name                  | Index No |
+| ------------ | --------------------- | -------- |
+| ICT/2022/123 | S.H.M.P.K. Senadheera | 5725     |
+| ICT/2022/122 | A.W.I Ahmed           | 5724     |
+| ICT/2022/121 | R.M.F. Zulfa          | 5723     |
+
+---
+
+## 📌 Project Purpose
+
+The main goal of this project is to provide a **simple campus navigation system** combined with a **personal note management tool** to help students organize their university activities efficiently.
+
+---
+
+
+
+
