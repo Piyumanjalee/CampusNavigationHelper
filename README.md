@@ -1,27 +1,31 @@
-# Campus Navigation Helper
+# Campus Navigation Helper 🏛️📍
 
-## Project Overview
-**Campus Navigation Helper** is an Android application designed to assist university students, staff, and visitors in easily navigating the campus premises. The app provides a comprehensive directory of important locations, interactive mapping, and a personalized experience for users to save their favorite spots.
+An Android application designed to help university students navigate the campus efficiently while providing a personalized space to manage academic and personal notes.
 
-## Key Features
-* **User Authentication:** Secure Registration and Login system using local SQLite database.
-* **Session Management:** Keeps users logged in using `SharedPreferences` until they choose to log out.
-* **Location Directory:** A clean, scrollable list (using `RecyclerView`) of key campus locations (e.g., Library, IT Faculty, Canteens).
-* **Favorite Locations:** Logged-in users can bookmark specific locations to their personalized 'Favorites' list.
-* **Interactive Map Integration:** View campus locations on a real-world map (Powered by Google Maps API).
+## 🌟 Features
 
-##  Technologies & Tools Used
-* **Platform:** Android
-* **Programming Language:** Java
-* **UI/UX:** XML (LinearLayout, ConstraintLayout, RecyclerView, CardView)
-* **Local Database:** SQLite (Relational DB for Users, Locations, and Favorites)
-* **Session Tracking:** SharedPreferences
-* **APIs:** Google Maps SDK for Android
-* **IDE:** Android Studio
+- **Interactive Dashboard:** A modern UI for quick access to campus maps and note management.
+- **Campus Information & Maps:** View indoor and outdoor maps of the university (Rajarata University of Sri Lanka).
+- **My Notes (Personal Organizer):**
+    - **Add Notes:** Save titles and detailed descriptions for academic tasks or personal reminders.
+    - **View Saved Notes:** A dynamic list (RecyclerView) that displays saved data in reverse chronological order (latest first).
+    - **SQLite Integration:** All notes are stored locally on the device for offline access.
+- **User Authentication:** Secure Login and Registration screens for personalized user experiences.
 
-##  How to Run the Project (Installation)
-1. Clone the repository to your local machine:
-   ```bash
-   git clone [https://github.com/your-username/CampusNavigationHelper.git](https://github.com/your-username/CampusNavigationHelper.git)
+## 🛠️ Tech Stack
 
-.
+- **Language:** Java
+- **UI Design:** XML (Material Design Components)
+- **Database:** SQLite (Local persistent storage)
+- **Architecture:** Activity-based architecture with RecyclerView & Adapter pattern.
+- **Tools:** Android Studio, Git/GitHub.
+
+
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Android Studio (Ladybug or newer)
+- Android SDK (Level 30+)
+- JDK 11 or higher
+
