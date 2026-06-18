@@ -8,10 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast; // අලුතින් එකතු කරන ලදි
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class CampusInfoActivity extends AppCompatActivity {
+
+    // Introduce DatabaseHelper
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,9 @@ public class CampusInfoActivity extends AppCompatActivity {
 
         // Connect the Java class with the corresponding XML layout file
         setContentView(R.layout.activity_campus_info);
+
+        // Initialize the DatabaseHelper
+        dbHelper = new DatabaseHelper(this);
 
 
         if (getSupportActionBar() != null) {
@@ -32,6 +39,13 @@ public class CampusInfoActivity extends AppCompatActivity {
         Button btnNavigate = findViewById(R.id.btnNavigate);
         Button btnViewFloorPlan = findViewById(R.id.btnViewFloorPlan);
         TextView txtRoute = findViewById(R.id.txtRoute);
+
+        // Initialize Favourite Buttons
+        Button btnFavLibrary = findViewById(R.id.btnFavLibrary);
+        Button btnFavIT = findViewById(R.id.btnFavIT);
+        Button btnFavCanteen = findViewById(R.id.btnFavCanteen);
+        Button btnFavApplied = findViewById(R.id.btnFavApplied);
+        Button btnFavMainLib = findViewById(R.id.btnFavMainLib);
 
         // Populate Spinners with Campus Locations
         String[] locations = {
@@ -50,8 +64,8 @@ public class CampusInfoActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String toLocation = locations[position];
-                if (toLocation.equals("Main Library") || toLocation.equals("IT Faculty Building") || 
-                    toLocation.equals("Faculty of Applied Sciences") || toLocation.equals("Main Building")) {
+                if (toLocation.equals("Main Library") || toLocation.equals("IT Faculty Building") ||
+                        toLocation.equals("Faculty of Applied Sciences") || toLocation.equals("Main Building")) {
                     btnViewFloorPlan.setVisibility(View.VISIBLE);
                 } else {
                     btnViewFloorPlan.setVisibility(View.GONE);
@@ -66,10 +80,10 @@ public class CampusInfoActivity extends AppCompatActivity {
 
         // Handle View Floor Plan Click
         btnViewFloorPlan.setOnClickListener(v -> {
-             String toLocation = spinnerTo.getSelectedItem().toString();
-             Intent intent = new Intent(CampusInfoActivity.this, IndoorMapActivity.class);
-             intent.putExtra("LOCATION_NAME", toLocation);
-             startActivity(intent);
+            String toLocation = spinnerTo.getSelectedItem().toString();
+            Intent intent = new Intent(CampusInfoActivity.this, IndoorMapActivity.class);
+            intent.putExtra("LOCATION_NAME", toLocation);
+            startActivity(intent);
         });
 
         // Handle Navigate Button Click
@@ -99,11 +113,50 @@ public class CampusInfoActivity extends AppCompatActivity {
             txtRoute.setText(routeText);
             txtRoute.setVisibility(View.VISIBLE);
         });
+
+        // ==========================================
+        // FAVOURITE BUTTONS CLICK LISTENERS
+        // ==========================================
+
+        // 1. 1st Main Library Button Click
+        btnFavLibrary.setOnClickListener(v -> {
+            saveToFavourites("1. Main Library", "Location: Next to the Faculty of Science.\nOperating Hours: 8:00 AM - 7:00 PM.");
+        });
+
+        // 2. IT Faculty Building Button Click
+        btnFavIT.setOnClickListener(v -> {
+            saveToFavourites("2. IT Faculty Building", "Location: Behind the main auditorium. Follow the second left path from the gate.");
+        });
+
+        // 3. Student Canteen Button Click
+        btnFavCanteen.setOnClickListener(v -> {
+            saveToFavourites("3. Student Canteen", "Location: Near the playground. Open for Breakfast and Lunch.");
+        });
+
+        // 4. Faculty of Applied Sciences Button Click
+        btnFavApplied.setOnClickListener(v -> {
+            saveToFavourites("Faculty of Applied Sciences", "Location: Near the Main Entrance, Mihintale.\nDepartments: Biological & Physical Sciences.");
+        });
+
+        // 5. 2nd Main Library Button Click
+        btnFavMainLib.setOnClickListener(v -> {
+            saveToFavourites("Main Library", "Location: Centrally located near Humanities Faculty.\nOpen: Weekdays 8 AM - 6 PM.");
+        });
+    }
+
+
+    private void saveToFavourites(String name, String description) {
+        boolean isInserted = dbHelper.addFavourite(name, description);
+        if (isInserted) {
+            Toast.makeText(CampusInfoActivity.this, name + " Added to Favourites!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(CampusInfoActivity.this, "Failed to add to Favourites", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        // Handle the back button click to return to the previous activity
+        // Handle the back button click to return to the previous activity (OnBackPressedDispatcher)
         onBackPressed();
         return true;
     }

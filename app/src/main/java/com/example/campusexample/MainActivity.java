@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    // 1. Declare all buttons including btnNotes
-    Button btnMap, btnNotes, btnLogout;
+    // 1. Declare all buttons including btnNotes and btnFavourites
+    Button btnMap, btnNotes, btnFavourites, btnLogout, btnNotesView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,10 @@ public class MainActivity extends AppCompatActivity {
         // 2. Initialize buttons from XML layout
         btnMap = findViewById(R.id.btnMap);
         btnNotes = findViewById(R.id.btnNotes); // Connected to 'My Notes' button
+        btnFavourites = findViewById(R.id.btnFavourites);
         btnLogout = findViewById(R.id.btnLogout);
+        btnNotesView = findViewById(R.id.btnNotesView);
+
 
         // 3. Set click listener for Campus Map
         btnMap.setOnClickListener(v -> {
@@ -33,7 +36,19 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // 5. Set click listener for Logout
+        // 5. Set click listener for My Favourites
+        btnFavourites.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FavouritesActivity.class);
+            startActivity(intent);
+        });
+        btnNotesView.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, NotesView.class);
+            startActivity(intent);
+        });
+
+
+
+        // 6. Set click listener for Logout
         btnLogout.setOnClickListener(v -> {
             Toast.makeText(MainActivity.this, "Logged Out Successfully", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);

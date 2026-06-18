@@ -10,8 +10,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database constants
     private static final String DATABASE_NAME = "CampusNav.db";
-    // Incremented to 4 to add the new 'notes' table
-    private static final int DATABASE_VERSION = 4;
+    // Incremented to 5 to add the new 'favourites' table
+    private static final int DATABASE_VERSION = 5;
 
     // 1. Table and Column names for USERS
     private static final String TABLE_USERS = "users";
@@ -26,6 +26,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_NOTE_ID = "note_id";
     private static final String COL_NOTE_TITLE = "title";
     private static final String COL_NOTE_CONTENT = "content";
+
+    // 3. Table and Column names for FAVOURITES
+    private static final String TABLE_FAVOURITES = "favourites";
+    private static final String COL_FAV_ID = "fav_id";
+    private static final String COL_FAV_NAME = "fav_name";
+    private static final String COL_FAV_DESCRIPTION = "fav_description";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,6 +54,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL_NOTE_TITLE + " TEXT,"
                 + COL_NOTE_CONTENT + " TEXT" + ")";
         db.execSQL(CREATE_NOTES_TABLE);
+
+        // Create FAVOURITES table
+        String CREATE_FAVOURITES_TABLE = "CREATE TABLE " + TABLE_FAVOURITES + "("
+                + COL_FAV_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + COL_FAV_NAME + " TEXT,"
+                + COL_FAV_DESCRIPTION + " TEXT" + ")";
+        db.execSQL(CREATE_FAVOURITES_TABLE);
     }
 
     @Override
@@ -55,10 +68,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Drop older tables if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVOURITES);
         onCreate(db);
     }
-
-
 
     public boolean addUser(String name, String email, String password, String dob) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -98,9 +110,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return exists;
     }
 
-
-
-
     public boolean addNote(String title, String content) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -108,6 +117,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COL_NOTE_CONTENT, content);
 
         long result = db.insert(TABLE_NOTES, null, values);
-        return result != -1; // returns true if success
+        return result != -1;
+    }
+
+    // METHODS FOR FAVOURITES
+    public boolean addFavourite(String name, String description) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_FAV_NAME, name);
+        values.put(COL_FAV_DESCRIPTION, description);
+
+        long result = db.insert(TABLE_FAVOURITES, null, values);
+        return result != -1;
+    }
+
+    public Cursor getAllFavourites() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_FAVOURITES, null);
+    }
+
+    // Method to get all notes
+    public Cursor getAllNotes() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_NOTES, null);
     }
 }
