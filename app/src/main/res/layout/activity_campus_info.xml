@@ -49,6 +49,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Category:"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/spinnerCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="12dp"
+                    android:minHeight="48dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="From:"
                     android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
@@ -107,6 +122,20 @@
                     app:backgroundTint="@color/color_primary"
                     android:textColor="@color/dark_background"
                     android:textStyle="bold"
+                    app:cornerRadius="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewGoogleMap"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="VIEW GOOGLE MAP"
+                    android:visibility="gone"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/color_primary"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/color_primary"
+                    app:strokeWidth="1.5dp"
                     app:cornerRadius="12dp" />
 
                 <com.google.android.material.button.MaterialButton

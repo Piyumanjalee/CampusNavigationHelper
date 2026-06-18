@@ -2,7 +2,6 @@ package com.example.campusexample;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +11,7 @@ public class FavouritesActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
     private ListView listViewFavourites;
-    private ArrayList<String> favList;
-    private ArrayAdapter<String> adapter;
+    private ArrayList<Favourite> favList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +33,27 @@ public class FavouritesActivity extends AppCompatActivity {
     }
 
     private void loadFavouritesData() {
+        favList.clear();
         Cursor cursor = dbHelper.getAllFavourites();
 
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No Favourites added yet!", Toast.LENGTH_SHORT).show();
+            FavouritesAdapter adapter = new FavouritesAdapter(this, favList);
+            listViewFavourites.setAdapter(adapter);
         } else {
             // Read every row in the database
             while (cursor.moveToNext()) {
-                // Column index 1 = fav_name, Column index 2 = fav_description
+                // Column index 0 = fav_id, Column index 1 = fav_name, Column index 2 = fav_description
+                int id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 String description = cursor.getString(2);
 
                 // Add to list
-                favList.add(name + "\n" + description);
+                favList.add(new Favourite(id, name, description));
             }
 
             // ListView adapter
-            adapter = new ArrayAdapter<>(this, R.layout.list_item_card, R.id.text1, favList);
+            FavouritesAdapter adapter = new FavouritesAdapter(this, favList);
             listViewFavourites.setAdapter(adapter);
         }
         cursor.close();

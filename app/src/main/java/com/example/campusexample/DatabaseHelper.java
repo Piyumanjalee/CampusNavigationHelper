@@ -141,4 +141,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NOTES, null);
     }
+
+    public boolean updateNote(int id, String title, String content) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_NOTE_TITLE, title);
+        values.put(COL_NOTE_CONTENT, content);
+        int result = db.update(TABLE_NOTES, values, COL_NOTE_ID + " = ?", new String[]{String.valueOf(id)});
+        return result > 0;
+    }
+
+    public boolean deleteNote(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_NOTES, COL_NOTE_ID + " = ?", new String[]{String.valueOf(id)});
+        return result > 0;
+    }
+
+    public boolean deleteFavourite(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete(TABLE_FAVOURITES, COL_FAV_ID + " = ?", new String[]{String.valueOf(id)});
+        return result > 0;
+    }
 }

@@ -2,7 +2,6 @@ package com.example.campusexample;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,7 +17,7 @@ public class NotesView extends AppCompatActivity {
 
     // UI and Database components
     ListView listViewNotes;
-    ArrayList<String> notesList;
+    ArrayList<Note> notesList;
     DatabaseHelper dbHelper;
 
     @Override
@@ -37,24 +36,31 @@ public class NotesView extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         listViewNotes = findViewById(R.id.listViewNotes);
         notesList = new ArrayList<>();
+    }
 
-        // Load notes
+    @Override
+    protected void onResume() {
+        super.onResume();
         loadNotes();
     }
 
     private void loadNotes() {
+        notesList.clear();
         Cursor cursor = dbHelper.getAllNotes();
 
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No notes found!", Toast.LENGTH_SHORT).show();
+            NotesAdapter adapter = new NotesAdapter(this, notesList);
+            listViewNotes.setAdapter(adapter);
         } else {
             while (cursor.moveToNext()) {
+                int id = cursor.getInt(0); // note_id column
                 String title = cursor.getString(1); // Title column
                 String content = cursor.getString(2); // Content column
-                notesList.add(title + ": \n" + content);
+                notesList.add(new Note(id, title, content));
             }
             // ListView adapter
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item_card, R.id.text1, notesList);
+            NotesAdapter adapter = new NotesAdapter(this, notesList);
             listViewNotes.setAdapter(adapter);
         }
         cursor.close();
