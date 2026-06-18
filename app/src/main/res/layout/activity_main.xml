@@ -4,110 +4,118 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="32dp"
+    android:padding="24dp"
     android:gravity="center_horizontal"
-    android:background="#A17BE6">
+    android:background="@color/dark_background">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="25dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="8dp"
-        android:layout_gravity="center_horizontal">
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/dark_surface">
         <ImageView
             android:id="@+id/ivDashboardIllustration"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@drawable/login_illustration" />
-
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Campus Dashboard"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="30dp" />
+        android:textColor="@color/text_primary"
+        android:layout_marginBottom="28dp"
+        android:fontFamily="sans-serif-medium" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnMap"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="CAMPUS MAP"
-            android:textColor="#A17BE6"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:backgroundTint="#FFFFFF"
-            app:cornerRadius="30dp"
-            app:elevation="4dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnNotes"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="20dp"
-            android:text="MY NOTES"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:backgroundTint="#8159C1"
-            app:cornerRadius="30dp"
-            app:strokeColor="#FFFFFF"
-            app:strokeWidth="2dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnFavourites"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="60dp"
-            android:text="MY FAVOURITES"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:backgroundTint="#8159C1"
-            app:cornerRadius="30dp"
-            app:strokeColor="#FFFFFF"
-            app:strokeWidth="2dp" />
-
-
-        <Button
-            android:id="@+id/btnNotesView"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="-50dp"
-            android:layout_marginBottom="50dp"
-            android:text="View Notes"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:text="LOGOUT"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:backgroundTint="#FF5252"
-            app:cornerRadius="20dp" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
-    </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMap"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="CAMPUS MAP"
+                android:textColor="@color/dark_background"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/color_primary"
+                app:cornerRadius="16dp"
+                app:elevation="2dp" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNotes"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:text="ADD NOTE"
+                android:textColor="@color/color_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                app:strokeColor="@color/color_primary"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNotesView"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:text="VIEW NOTES"
+                android:textColor="@color/color_accent"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                app:strokeColor="@color/color_accent"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFavourites"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:text="MY FAVOURITES"
+                android:textColor="@color/color_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                app:strokeColor="@color/color_primary"
+                app:strokeWidth="2dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:text="LOGOUT"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:backgroundTint="#EF4444"
+                app:cornerRadius="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

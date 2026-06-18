@@ -51,7 +51,7 @@ public class FavouritesActivity extends AppCompatActivity {
             }
 
             // ListView adapter
-            adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, favList);
+            adapter = new ArrayAdapter<>(this, R.layout.list_item_card, R.id.text1, favList);
             listViewFavourites.setAdapter(adapter);
         }
         cursor.close();

@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="dark_background">#121214</color>
+    <color name="dark_surface">#1E1E24</color>
+    <color name="dark_card_border">#2D2D35</color>
+    <color name="color_primary">#A78BFA</color>
+    <color name="color_secondary">#8B5CF6</color>
+    <color name="color_accent">#EC4899</color>
+    <color name="text_primary">#F3F4F6</color>
+    <color name="text_secondary">#9CA3AF</color>
 </resources>

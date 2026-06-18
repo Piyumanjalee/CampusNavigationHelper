@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8F9FA"
+    android:background="@color/dark_background"
     android:padding="16dp">
 
     <TextView
@@ -12,14 +12,15 @@
         android:text="My Favourite Locations"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#333333"
+        android:textColor="@color/text_primary"
+        android:fontFamily="sans-serif-medium"
         android:layout_marginBottom="16dp"/>
 
     <ListView
         android:id="@+id/listViewFavourites"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#CCCCCC"
-        android:dividerHeight="1dp" />
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
 
 </LinearLayout>

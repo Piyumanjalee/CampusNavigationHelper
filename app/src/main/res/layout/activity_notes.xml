@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    android:background="#A17BE6">
+    android:background="@color/dark_background">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,24 +13,30 @@
         android:text="Add New Note"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/text_primary"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-medium" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Note Title"
-        android:textColorHint="#FFFFFF"
-        app:boxStrokeColor="#FFFFFF"
-        app:hintTextColor="#FFFFFF"
-        app:boxStrokeWidth="2dp">
+        android:textColorHint="@color/text_secondary"
+        app:boxStrokeColor="@color/color_primary"
+        app:hintTextColor="@color/color_primary"
+        app:boxStrokeWidth="1.5dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNoteTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/text_primary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -40,17 +46,22 @@
         android:layout_weight="1"
         android:layout_marginTop="16dp"
         android:hint="Write your note here..."
-        android:textColorHint="#FFFFFF"
-        app:boxStrokeColor="#FFFFFF"
-        app:hintTextColor="#FFFFFF"
-        app:boxStrokeWidth="2dp">
+        android:textColorHint="@color/text_secondary"
+        app:boxStrokeColor="@color/color_primary"
+        app:hintTextColor="@color/color_primary"
+        app:boxStrokeWidth="1.5dp"
+        app:boxStrokeWidthFocused="2dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusBottomEnd="12dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etNoteContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="top"
             android:inputType="textMultiLine"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/text_primary" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -60,8 +71,9 @@
         android:layout_marginTop="24dp"
         android:text="SAVE NOTE"
         android:textStyle="bold"
-        android:textColor="#A17BE6"
-        app:backgroundTint="#FFFFFF"
-        app:cornerRadius="30dp" />
+        android:textColor="@color/dark_background"
+        app:backgroundTint="@color/color_primary"
+        app:cornerRadius="16dp"
+        app:elevation="2dp" />
 
 </LinearLayout>

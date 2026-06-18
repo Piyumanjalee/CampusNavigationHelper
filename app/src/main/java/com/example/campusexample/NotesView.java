@@ -54,7 +54,7 @@ public class NotesView extends AppCompatActivity {
                 notesList.add(title + ": \n" + content);
             }
             // ListView adapter
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, notesList);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item_card, R.id.text1, notesList);
             listViewNotes.setAdapter(adapter);
         }
         cursor.close();

@@ -4,42 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_background"
+    android:padding="16dp"
     tools:context=".IndoorMapActivity">
 
     <TextView
         android:id="@+id/tvLocationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Location Name"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvFloorDetails"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvFloorDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="18sp"
-        android:lineSpacingExtra="4dp"
-        android:textColor="#333333"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/dark_surface"
+        app:strokeColor="@color/dark_card_border"
+        app:strokeWidth="1.5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLocationName" />
+        app:layout_constraintTop_toBottomOf="@id/tvLocationName">
 
-    <ImageView
-        android:id="@+id/ivFloorPlan"
+        <TextView
+            android:id="@+id/tvFloorDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textSize="15sp"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/text_secondary" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvFloorPlan"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:contentDescription="Indoor Floor Plan"
-        android:scaleType="fitCenter"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="3dp"
+        app:cardBackgroundColor="@color/dark_surface"
+        app:strokeColor="@color/dark_card_border"
+        app:strokeWidth="1.5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFloorDetails" />
+        app:layout_constraintTop_toBottomOf="@id/cvFloorDetails">
+
+        <ImageView
+            android:id="@+id/ivFloorPlan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Indoor Floor Plan"
+            android:scaleType="fitCenter"
+            android:padding="12dp" />
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
